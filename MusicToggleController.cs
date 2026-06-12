@@ -7,13 +7,11 @@ public class MusicToggleController : MonoBehaviour
 
     void Start()
     {
-        // Set toggle sesuai kondisi musik saat ini
         if (BackgroundMusic.Instance != null)
         {
             musicToggle.isOn = BackgroundMusic.Instance.GetComponent<AudioSource>().isPlaying;
         }
 
-        // Tambahkan listener saat toggle berubah
         musicToggle.onValueChanged.AddListener(OnToggleChanged);
     }
 
