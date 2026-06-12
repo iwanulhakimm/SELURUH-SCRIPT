@@ -7,7 +7,6 @@ public class PopUpController : MonoBehaviour
     public GameObject panelAngka;
     public GameObject panelRarangken;
 
-    // Fungsi bantu: matikan semua dulu
     void CloseAll()
     {
         panelNgalagena.SetActive(false);
