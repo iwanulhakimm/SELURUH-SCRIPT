@@ -9,7 +9,6 @@ public class Swipe : MonoBehaviour {
     float[] pos;
     int posiisi = 0;
 
-    // Use this for initialization
     void Start () {
     }
 
@@ -27,7 +26,7 @@ public class Swipe : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
+
     void Update () {
         pos = new float[transform.childCount];
         float distance = 1f / (pos.Length - 1f);
