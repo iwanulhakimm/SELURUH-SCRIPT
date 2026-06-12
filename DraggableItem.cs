@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// --- TAMBAHAN: Kita tambahkan IPointerDownHandler di baris ini ---
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     [Header("Identitas Aksara")]
@@ -26,10 +25,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
-    // --- FUNGSI BARU: Mendeteksi sentuhan super cepat ---
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Mainkan suara klik tepat saat jari/mouse menyentuh tombol (tanpa delay)
         PengaturSusunKata wasit = FindObjectOfType<PengaturSusunKata>();
         if (wasit != null) 
         {
@@ -44,7 +41,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         canvasGroup.blocksRaycasts = false; 
         berhasilDitaruh = false; 
         
-        // (Pemanggilan suara klik dihapus dari sini karena sudah dipindah ke OnPointerDown)
     }
 
     public void OnDrag(PointerEventData eventData)
