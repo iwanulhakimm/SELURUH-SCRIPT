@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Wajib ditambahkan untuk fitur memuat ulang layar
+using UnityEngine.SceneManagement;
 
 public class PengaturSusunKata : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class PengaturSusunKata : MonoBehaviour
     [Header("Pengaturan Popup & Aturan")]
     public GameObject popupBenar;
     public GameObject popupSalah;
-    public GameObject popupSelesai; // --- WADAH BARU UNTUK POPUP SELESAI ---
+    public GameObject popupSelesai; 
     public int batasMaksimalSalah = 3; 
 
     [Header("Pengaturan Suara")]
@@ -25,7 +25,7 @@ public class PengaturSusunKata : MonoBehaviour
 
     void Start()
     {
-        // Pastikan semua popup mati saat game baru mulai
+        
         if (popupBenar != null) popupBenar.SetActive(false);
         if (popupSalah != null) popupSalah.SetActive(false);
         if (popupSelesai != null) popupSelesai.SetActive(false);
@@ -82,17 +82,16 @@ public class PengaturSusunKata : MonoBehaviour
         jumlahBenarSaatIni = 0; 
         jumlahSalahSaatIni = 0; 
 
-        // Cek apakah masih ada soal atau sudah habis
         if (soalSaatIni < daftarPanelSoal.Length)
         {
             TampilkanSoal(soalSaatIni);
         }
         else
         {
-            // --- JIKA SEMUA SOAL SUDAH SELESAI ---
+        
             if (popupSelesai != null) 
             {
-                popupSelesai.SetActive(true); // Munculkan Popup Selesai
+                popupSelesai.SetActive(true); 
             }
         }
     }
@@ -106,10 +105,10 @@ public class PengaturSusunKata : MonoBehaviour
         daftarPanelSoal[index].SetActive(true);
     }
 
-    // --- FUNGSI BARU UNTUK TOMBOL "ULANGI" ---
+
     public void UlangiPermainan()
     {
-        // Perintah ini akan memuat ulang layar (Scene) yang sedang aktif dari awal
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
