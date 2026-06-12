@@ -25,10 +25,10 @@ public class ARInteraction : MonoBehaviour
         HandleZoom();
         HandleRotate();
 
-        // Smooth scaling
+
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * smoothSpeed);
 
-        // Smooth rotation
+      
         Quaternion targetRotation = Quaternion.Euler(0, rotationY, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * smoothSpeed);
     }
