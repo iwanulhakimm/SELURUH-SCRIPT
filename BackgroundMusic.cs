@@ -21,7 +21,7 @@ public class BackgroundMusic : MonoBehaviour
 
             myAudioSource = GetComponent<AudioSource>();
 
-            // Ambil status music tersimpan
+    
             isMusicOn = PlayerPrefs.GetInt("MusicStatus", 1) == 1;
 
             if (isMusicOn)
