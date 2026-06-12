@@ -42,13 +42,11 @@ public class MatchGameController : MonoBehaviour
             temp.RemoveAt(rand);
         }
 
-        // tampilkan aksara
         for (int i = 0; i < 5; i++)
         {
             soalImages[i].sprite = selectedQuestions[i].aksaraImage;
         }
 
-        // ambil jawaban
         List<AksaraQuestion> answerPool = new List<AksaraQuestion>(selectedQuestions);
 
         Shuffle(answerPool);
