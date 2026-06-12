@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-// #if IMAGINE_URP
-// using UnityEngine.Rendering;
-// using UnityEngine.Rendering.Universal;
-// #endif
+
 using System.Runtime.InteropServices;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -43,7 +40,6 @@ namespace Imagine.WebAR
         [SerializeField] private List<string> trackedIds = new List<string>();
         private string serializedIds = "";
 
-        // [SerializeField] private bool overrideTrackerSettings = false;
         [SerializeField] private TrackerSettings trackerSettings;
 
         [SerializeField] private bool dontDeactivateOnLost = false;
@@ -106,11 +102,6 @@ namespace Imagine.WebAR
 
 
 #if !UNITY_EDITOR && UNITY_WEBGL
-            // while (!IsWebGLiTrackerReady())
-            // {
-            //     Debug.Log("waiting for tracker ready");
-            //     yield return new WaitForSeconds(0.1f);
-            // }
 
             StartWebGLiTracker(serializedIds, name);
             Debug.Log(trackerSettings.Serialize());
@@ -143,7 +134,7 @@ namespace Imagine.WebAR
         {
             if (stopOnDestroy)
                 StopTracker();
-            //SetWebGLiTrackerSettings(trackerSettings.Serialize());
+            
         }
 
         public void StartTracker()
