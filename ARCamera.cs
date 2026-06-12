@@ -77,7 +77,7 @@ namespace Imagine.WebAR
 
             
 #if IMAGINE_URP
-            //Debug.Log(GraphicsSettings.defaultRenderPipeline.GetType());
+            
             if (GraphicsSettings.currentRenderPipeline != null &&
                  GraphicsSettings.defaultRenderPipeline.GetType().ToString().EndsWith("UniversalRenderPipelineAsset") &&
                  videoPlaneMode == VideoPlaneMode.NONE
@@ -186,12 +186,6 @@ namespace Imagine.WebAR
         public void Resize(string dims)
         {
 
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//             //this will tell arCamera in js if unity is also rendering a videoplane
-//             //and will avoid rendering duplicate planes, and save some fps
-//             WebGLUseUnityVideoPlane(videoPlaneMode != VideoPlaneMode.NONE);
-// #endif
-
             var vals = dims.Split(new string[] { "," }, System.StringSplitOptions.RemoveEmptyEntries);
             var width = int.Parse(vals[0]);
             var height = int.Parse(vals[1]);
@@ -201,7 +195,6 @@ namespace Imagine.WebAR
 
             if(videoPlaneMode == VideoPlaneMode.NONE)
             {
-                //we resize only when videoplane is active
                 return;
             }
 
@@ -266,21 +259,6 @@ namespace Imagine.WebAR
 #endif
         }
 
-        // public void DebugDrawDataUrl(string dataUrl, int width, int height){
-        //     Resize(width + "," + height);
-
-        //     dataUrl = dataUrl.Replace("data:image/png;base64,", "");
-        //     var oldTex = videoPlaneMat.mainTexture;
-        //     if( oldTex != null){
-        //         Destroy(oldTex);
-        //     }
-
-        //     Texture2D tex = new Texture2D (width, height);
-        //     tex.LoadImage(System.Convert.FromBase64String(dataUrl));
-        //     tex.Apply ();
-        //     videoPlaneMat.mainTexture = tex;
-        // }
-
         void OnApplicationFocus(bool hasFocus)
         {
             if(pauseOnApplicationLostFocus){
@@ -319,7 +297,6 @@ namespace Imagine.WebAR
             isFlipped = message == "true";
             OnCameraImageFlipped?.Invoke(isFlipped);
 
-            //flip videoPlane
             if(videoBackground != null){
                 var newScale = videoBackground.transform.localScale;
                 newScale.x = Mathf.Abs(newScale.x) * (isFlipped ? -1 : 1);
