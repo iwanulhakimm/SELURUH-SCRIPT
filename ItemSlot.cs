@@ -8,17 +8,15 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public string hurufYangDiharapkan;
     public Image visualKotak; 
 
-    // --- TAMBAHAN BARU: Variabel Gembok ---
     private bool sudahTerisiBenar = false; 
 
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
-            // --- LOGIKA GEMBOK: Jika sudah terisi, abaikan (berhenti di sini) ---
             if (sudahTerisiBenar == true)
             {
-                return; // Perintah return akan membatalkan semua kode di bawahnya
+                return; 
             }
 
             DraggableItem itemYangDitarik = eventData.pointerDrag.GetComponent<DraggableItem>();
@@ -35,7 +33,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     Invoke("KembalikanWarnaKotak", 0.5f); 
                     itemYangDitarik.gameObject.SetActive(false);
                     
-                    // --- KUNCI GEMBOKNYA KARENA JAWABAN SUDAH BENAR ---
+                 
                     sudahTerisiBenar = true; 
                     
                     if (wasit != null) 
